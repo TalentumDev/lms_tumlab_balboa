@@ -19,6 +19,7 @@ services:
     restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
+      - "tumlab.local:host-gateway"
     environment:
       KEYCLOAK_CREATE_ADMIN_USER: true
       KEYCLOAK_ADMIN_USER: admin
@@ -62,6 +63,7 @@ services:
     restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
+      - "tumlab.local:host-gateway"
     environment:
       JWKS_URI: http://tumlab.local:8080/auth/realms/aulassteambalboa/protocol/openid-connect/certs
       DB_HOST: host.docker.internal
@@ -85,6 +87,9 @@ services:
     image: bilinguismotalentum/frontend:1.1.12-balboa
     container_name: aulas_steam_reporter_frontend
     restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      - "tumlab.local:host-gateway"
     environment:
       KEYCLOAK_CLIENT_ID: sireporterfrontend
       KEYCLOAK_CLIENT_SECRET: a4HP4P8oa6iczYAg2OsqjsH2wEOPoxoO
@@ -107,7 +112,7 @@ services:
     restart: always
     extra_hosts:
       - "host.docker.internal:host-gateway"
-      - "tumlab.local:192.168.4.1"
+      - "tumlab.local:host-gateway"
     environment:
       MOODLE_DATABASE_TYPE: mysqli
       MOODLE_DATABASE_HOST: host.docker.internal
